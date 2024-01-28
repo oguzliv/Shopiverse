@@ -1,0 +1,58 @@
+@using Shopiverse.Models
+@model IEnumerable<User>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Address</th>
+            <th>Province</th>
+            <th>District</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.FirstName</td>
+                <td>@user.LastName</td>
+                <td>@user.Address</td>
+                <td>@string.Format("{0:c}", @user.Province)</td>
+                <td>@user.District</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<form method="post" action="/api/User" class="p-4 my-4 border rounded" enctype="application/json">
+    <div class="card">
+        <div class="card-header">Create New User</div>
+        <div class="card-body">
+            <div class="mb-3">
+                <label for="id" class="form-label">Id:</label>
+                <input type="number" class="form-control" id="id" name="id" required>
+            </div>
+            <div class="mb-3">
+                <label for="FirstName" class="form-label">First Name:</label>
+                <input type="text" class="form-control" id="FirstName" name="FirstName" required>
+            </div>
+            <div class="mb-3">
+                <label for="LastName" class="form-label">Last Name:</label>
+                <input type="text" class="form-control" id="LastName" name="LastName" required>
+            </div>
+            <div class="mb-3">
+                <label for="Address" class="form-label">Address:</label>
+                <input type="text" class="form-control" id="Address" name="Address" required>
+            </div>
+            <div class="mb-3">
+                <label for="Province" class="form-label">Province:</label>
+                <input type="text" class="form-control" id="Province" name="Province" required>
+            </div>
+            <div class="mb-3">
+                <label for="District" class="form-label">District:</label>
+                <input type="text" class="form-control" id="District" name="District" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Create User</button>
+        </div>
+    </div>
+</form>
